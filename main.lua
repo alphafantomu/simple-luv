@@ -191,7 +191,7 @@ local createGitIgnore = function()
 end;
 
 local createEditorConfig = function()
-	assert(not fs_exists('.editorconfig', 'file'), '.gitignore found in current directory');
+	assert(not fs_exists('.editorconfig', 'file'), '.editorconfig found in current directory');
 	print('Creating .editorconfig');
 	local fd = assert(uv.fs_open('.editorconfig', 'w', MAX_PERMS));
 	local body = assert(bundle.readfile('example.editorconfig'), '.editorconfig not found');
