@@ -184,7 +184,7 @@ local createGitIgnore = function()
 	assert(not fs_exists('.gitignore', 'file'), '.gitignore found in current directory');
 	print('Creating .gitignore');
 	local fd = assert(uv.fs_open('.gitignore', 'w', MAX_PERMS));
-	local body = assert(bundle.readfile('.gitignore'), '.gitignore not found');
+	local body = assert(bundle.readfile('example.gitignore'), '.gitignore not found');
 	assert(uv.fs_write(fd, body, 0));
 	print('Created .gitignore');
 	return assert(uv.fs_close(fd));
@@ -194,7 +194,7 @@ local createEditorConfig = function()
 	assert(not fs_exists('.editorconfig', 'file'), '.gitignore found in current directory');
 	print('Creating .editorconfig');
 	local fd = assert(uv.fs_open('.editorconfig', 'w', MAX_PERMS));
-	local body = assert(bundle.readfile('.editorconfig'), '.editorconfig not found');
+	local body = assert(bundle.readfile('example.editorconfig'), '.editorconfig not found');
 	assert(uv.fs_write(fd, body, 0));
 	print('Created .editorconfig');
 	return assert(uv.fs_close(fd));
