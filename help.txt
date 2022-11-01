@@ -1,8 +1,0 @@
-	--version (-v) [location]	Shows current SimpleLuv version
-	--setup (-s)			Moves Luvit, Luvi, and Lit binaries to a global binary directory then 
-					adds that directory to PATH, LUA_PATH and LUA_CPATH is adjusted to have an easy require in project folder.
-	--help (-h)			Shows flags project setup
-	--githublink (-gl) [paths]	Links libraries to the project directory for SumNeko's LLS but starts in Github Desktop's Repository Directory
-	--link (-l) [paths]		Links libraries to the project directory with relative or absolute paths
-	--gitignore (-gi)		Creates a .gitignore file for the project directory, used for ignoring certain file extensions like .dll and .so.
-	--editorconfig (-ec)		Creates a .editorconfig for the proejct directory, used for tabbing when reading code from GitHub Repositories.
