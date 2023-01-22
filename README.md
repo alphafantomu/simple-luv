@@ -1,5 +1,5 @@
 # simple-luv
-A self-contained binary CLI that helps with setting up for a new project or for future projects for Luvit. Supports Windows and Linux but Linux hasn't been tested
+A self-contained binary CLI that helps with setting up for a new project or for future projects for Luvit. Supports Windows and Linux but Linux hasn't been tested. There's an issue with setting up environment paths, please be wary
 
 # Installation
 You can get the latest release [here](https://github.com/alphafantomu/simple-luv/releases/latest), only Windows x64 binaries are provided.
