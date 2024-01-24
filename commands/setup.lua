@@ -87,10 +87,10 @@ local setupEnvironmentVariables = function()
 	local env_LUA_CPATH = format(ENV_VARIABLE_DISPLAY, 'LUA_CPATH');
 
 	print('Checking '..env_PATH..'\n');
-	local binary_path = assert(uv.os_getenv('PATH', ENV_BUFFER_SIZE));
+	local binary_path = uv.os_getenv('PATH', ENV_BUFFER_SIZE);
 	if (not binary_path) then
 		print('Setting binary directory "'..BINARY_DIRECTORY..'" to '..env_PATH);
-		os_setenv('PATH', BINARY_DIRECTORY..';');
+		os_setenv('PATH', BINARY_DIRECTORY);
 	else
 		local paths = extension.string.split(binary_path, ';');
 		local n = #paths;
@@ -104,13 +104,14 @@ local setupEnvironmentVariables = function()
 		end;
 		if (not found) then
 			print('Adding binary directory "'..BINARY_DIRECTORY..'" to '..env_PATH);
-			os_setenv('PATH', binary_path..BINARY_DIRECTORY..';');
+			print('heh?', binary_path, BINARY_DIRECTORY);
+			os_setenv('PATH', BINARY_DIRECTORY);
 		end;
 	end;
 
 	-- Add project paths to standard lua path
 	print('\nChecking '..env_LUA_PATH..'\n');
-	local lua_path = assert(uv.os_getenv('LUA_PATH', ENV_BUFFER_SIZE));
+	local lua_path = uv.os_getenv('LUA_PATH', ENV_BUFFER_SIZE);
 	if (not lua_path) then
 		print('Setting project paths "'..COMBINED_LUA_PATH..'" to '..env_LUA_PATH);
 		os_setenv('LUA_PATH', COMBINED_LUA_PATH..';');
@@ -123,7 +124,7 @@ local setupEnvironmentVariables = function()
 			if (target_path == BASE_LUA_PATH or target_path == MODULE_LUA_PATH) then
 				ns_found = ns_found + 1;
 				last_path = target_path;
-				print(env_LUA_CPATH..' already has the library project path '..tostring(ns_found));
+				print(env_LUA_PATH..' already has the library project path '..tostring(ns_found));
 				if (ns_found >= 2) then
 					break;
 				end;
@@ -140,7 +141,7 @@ local setupEnvironmentVariables = function()
 
 	-- Add project paths to standard lua c path
 	print('\nChecking '..env_LUA_CPATH..'\n');
-	local lua_cpath = assert(uv.os_getenv('LUA_CPATH', ENV_BUFFER_SIZE));
+	local lua_cpath = uv.os_getenv('LUA_CPATH', ENV_BUFFER_SIZE);
 	if (not lua_cpath) then
 		print('Setting project path "'..LIBRARY_LUA_CPATH..'" to '..env_LUA_CPATH);
 		uv.os_setenv('LUA_CPATH', LIBRARY_LUA_CPATH..';');
